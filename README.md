@@ -1,6 +1,6 @@
-﻿# Modular Monolith
+﻿# CommerceLab
 
-Learning project for Docker, Message Brokers (RabbitMQ + MassTransit) and Observability with .NET 8.
+Modular monolith for learning Docker, Message Brokers (RabbitMQ + MassTransit) and Observability with .NET 8.
 
 ## Structure
 - `src/Services/Orders/`
