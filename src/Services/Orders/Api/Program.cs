@@ -1,4 +1,3 @@
-using Orders.Api.Extensions;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -18,7 +17,7 @@ try
 
     app.Run();
 }
-catch (Exception e) when (e is not HostAbortedException)
+catch (Exception e)
 {
     Log.Fatal(e, "Application terminated unexpectedly");
 }
