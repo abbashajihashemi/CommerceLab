@@ -2,7 +2,7 @@
 # Stage 1: Build
 # ======================
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+WORKDIR /build
 
 # Copying project files for better restoration (cache layer)
 COPY ["src/Services/Orders/Api/Orders.Api.csproj", "src/Services/Orders/Api/"]
@@ -15,7 +15,7 @@ RUN dotnet restore "src/Services/Orders/Api/Orders.Api.csproj"
 # Copy other sources
 COPY . .
 
-WORKDIR "/src/src/Services/Orders/Api"
+WORKDIR /build/src/Services/Orders/Api
 RUN dotnet build "Orders.Api.csproj" -c Release -o /app/build
 
 # ======================
