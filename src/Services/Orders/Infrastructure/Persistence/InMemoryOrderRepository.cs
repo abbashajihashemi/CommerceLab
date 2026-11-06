@@ -17,6 +17,9 @@ public class InMemoryOrderRepository : IOrderRepository
     {
         IEnumerable<Order> storeQuery = Store.Values;
 
+        if (filter.VendorCode is { } vendorCode)
+            storeQuery = storeQuery.Where(x => x.VendorCode == vendorCode);
+
         if (filter.MinTotal is { } min)
             storeQuery = storeQuery.Where(x => x.TotalAmount >= min);
 
@@ -55,6 +58,14 @@ public class InMemoryOrderRepository : IOrderRepository
             .Select(n => new Guid(n, 0, 0, new byte[8]))
             .ToArray();
 
+        // 1031 matches Inventories in-memory stock; others exist for multi-vendor orders
+        var vendors = new (int Code, string DisplayName)[]
+        {
+            (1031, "TechSupply Co"),
+            (1032, "Gadget Hub"),
+            (1033, "Office Essentials"),
+        };
+
         // (code, percent)
         var discounts = new (string Code, decimal Percent)[]
         {
@@ -68,11 +79,14 @@ public class InMemoryOrderRepository : IOrderRepository
         for (var i = 1; i <= 12; i++)
         {
             var orderId = OrderSeedIds.All[i - 1];
+            var vendor = vendors[(i - 1) % vendors.Length];
 
             var order = new Order
             {
                 Id = orderId,
                 Code = $"ORD-{now:yyyyMMdd}-{i:D4}",
+                VendorCode = vendor.Code,
+                VendorDisplayName = vendor.DisplayName,
                 StepStatus = statuses[(i - 1) % statuses.Length],
                 CustomerId = customers[(i - 1) % customers.Length],
                 CreatedAt = now.AddDays(-i).AddMinutes(-i * 7),

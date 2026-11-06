@@ -1,15 +1,18 @@
 using System.Net.Http.Json;
 using Microsoft.Extensions.Logging;
-using Orders.Application.Inventory;
+using Orders.Application.Inventories;
 
-namespace Orders.Infrastructure.Clients.Inventory;
+namespace Orders.Infrastructure.Clients.Inventories;
 
 public class InventoryClient(
     HttpClient httpClient,
     ILogger<InventoryClient> logger
 ) : IInventoryClient
 {
-    public async Task<IReadOnlyList<ProductStockResponse>> GetStockAsync(IEnumerable<long> productCodes, CancellationToken ct = default)
+    public async Task<IReadOnlyList<ProductStockResponse>> GetStockAsync(
+        int vendorCode,
+        IEnumerable<long> productCodes,
+        CancellationToken ct = default)
     {
         var ids = productCodes.Distinct().ToArray();
         if (ids.Length == 0)
@@ -21,8 +24,8 @@ public class InventoryClient(
         var body = new StockQueryRequest(ids);
         logger.LogInformation("Stock inquiry sending request {body}", body);
 
-        using var response = await httpClient.PostAsJsonAsync(
-            "api/v1/inventory/inquiry", body, ct);
+        var route = $"api/v1/vendors/{vendorCode}/stock";
+        using var response = await httpClient.PostAsJsonAsync(route, body, ct);
 
         response.EnsureSuccessStatusCode();
 
