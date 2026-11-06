@@ -1,0 +1,28 @@
+using Orders.Api.Extensions;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
+
+try
+{
+    Log.Information("Starting Orders API");
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.Host.UseSerilogLogging();
+    builder.Services.AddApiServices(builder.Configuration);
+
+    var app = builder.Build();
+    app.UseApiPipeline();
+
+    app.Run();
+}
+catch (Exception e) when (e is not HostAbortedException)
+{
+    Log.Fatal(e, "Application terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

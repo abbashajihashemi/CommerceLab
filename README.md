@@ -1,14 +1,16 @@
-﻿# OrderManagement
+﻿# CommerceLab
 
-Modular Monolith for learning Docker, Message Brokers (RabbitMQ + MassTransit) and Observability with .NET 8.
+Modular monolith for learning Docker, Message Brokers (RabbitMQ + MassTransit) and Observability with .NET 8.
 
 ## Structure
-- `OrderManagement.Api`
-- `OrderManagement.Application`
-- `OrderManagement.Domain`
-- `OrderManagement.Infrastructure`
+- `src/Services/Orders/`
+  - `Api`
+  - `Application`
+  - `Domain`
+  - `Infrastructure`
 
 ## How to run
 ```bash
-cd src/OrderManagement.Api
+cd src/Services/Orders/Api
 dotnet run
+```
