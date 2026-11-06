@@ -1,16 +1,16 @@
-﻿# OrderManagement
+﻿# Modular Monolith
 
-Modular Monolith for learning Docker, Message Brokers (RabbitMQ + MassTransit) and Observability with .NET 8.
+Learning project for Docker, Message Brokers (RabbitMQ + MassTransit) and Observability with .NET 8.
 
 ## Structure
-- `src/Services/OrderManagement/`
-  - `Api` (assembly: `OrderManagement.Api`)
-  - `Application` (assembly: `OrderManagement.Application`)
-  - `Domain` (assembly: `OrderManagement.Domain`)
-  - `Infrastructure` (assembly: `OrderManagement.Infrastructure`)
+- `src/Services/Orders/`
+  - `Api`
+  - `Application`
+  - `Domain`
+  - `Infrastructure`
 
 ## How to run
 ```bash
-cd src/Services/OrderManagement/Api
+cd src/Services/Orders/Api
 dotnet run
 ```

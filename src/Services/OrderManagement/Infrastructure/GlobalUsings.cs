@@ -1,2 +1,0 @@
-﻿global using OrderManagement.Application.Abstractions.BuildingBlocks.Results;
-global using OrderManagement.Application.Abstractions.Persistence;
