@@ -1,4 +1,6 @@
-﻿namespace Inventories.Api.Extensions;
+﻿using Inventories.Api.Applications;
+
+namespace Inventories.Api.Extensions;
 
 public static class ServiceCollectionExtensions
 {
@@ -8,5 +10,7 @@ public static class ServiceCollectionExtensions
         services.AddEndpointsApiExplorer();
         services.AddHealthChecks();
         services.AddVersioningApis();
+
+        services.AddScoped<IVendorStockService, InMemoryVendorStockService>();
     }
 }
