@@ -8,6 +8,8 @@ public class OrderDetailDto
 {
     public Guid Id { get; set; }
     public string Code { get; set; } = null!;
+    public int VendorCode { get; set; }
+    public string VendorDisplayName { get; set; } = null!;
     public OrderStepStatus StepStatus { get; set; }
     public DateTime CreatedAt { get; set; }
 

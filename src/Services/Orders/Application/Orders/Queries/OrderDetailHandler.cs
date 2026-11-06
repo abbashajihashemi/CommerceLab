@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Orders.Application.Abstractions.Persistence;
-using Orders.Application.Inventory;
+using Orders.Application.Inventories;
 using Orders.Domain;
 
 namespace Orders.Application.Orders.Queries;
@@ -40,7 +40,7 @@ public sealed class OrderDetailHandler(
         }
 
         var productCodes = order.Items.Select(x => x.ProductCode).ToList();
-        return await inventoryClient.GetStockAsync(productCodes, ct);
+        return await inventoryClient.GetStockAsync(order.VendorCode, productCodes, ct);
     }
 
     private static OrderDetailDto MapOrderToResult(

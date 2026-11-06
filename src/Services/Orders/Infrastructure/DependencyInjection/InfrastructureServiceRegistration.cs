@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Orders.Application.Inventory;
-using Orders.Infrastructure.Clients.Inventory;
+using Orders.Application.Inventories;
+using Orders.Infrastructure.Clients.Inventories;
 using Orders.Infrastructure.Http;
 using Orders.Infrastructure.Persistence;
 
@@ -20,20 +20,13 @@ public static class InfrastructureServiceRegistration
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
-        if (configuration.GetValue<bool>($"{InventoryClientOptions.Section}:UseInMemory"))
-        {
-            services.AddSingleton<IInventoryClient, InMemoryInventoryClient>();
-        }
-        else
-        {
-            services.AddHttpClient<IInventoryClient, InventoryClient>((sp, client) =>
-                {
-                    var options = sp.GetRequiredService<IOptions<InventoryClientOptions>>();
-                    client.BaseAddress = new Uri(options.Value.BaseUrl);
-                })
-                .AddHttpMessageHandler<CorrelationIdHandler>()
-                .AddStandardResilienceHandler();
-        }
+        services.AddHttpClient<IInventoryClient, InventoryClient>((sp, client) =>
+            {
+                var options = sp.GetRequiredService<IOptions<InventoryClientOptions>>();
+                client.BaseAddress = new Uri(options.Value.BaseUrl);
+            })
+            .AddHttpMessageHandler<CorrelationIdHandler>()
+            .AddStandardResilienceHandler();
 
         services.AddScoped<IOrderRepository, InMemoryOrderRepository>();
     }

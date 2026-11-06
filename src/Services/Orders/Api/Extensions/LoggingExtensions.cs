@@ -1,5 +1,6 @@
-namespace Orders.Api.Extensions;
 using Serilog;
+
+namespace Orders.Api.Extensions;
 
 public static class LoggingExtensions
 {

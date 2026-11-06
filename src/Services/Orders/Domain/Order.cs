@@ -5,6 +5,8 @@ namespace Orders.Domain;
 public class Order : BaseEntity<Guid>
 {
     public string Code { get; set; } = null!;
+    public int VendorCode { get; set; }
+    public string VendorDisplayName { get; set; } = null!;
     public OrderStepStatus StepStatus { get; set; }
     public Guid CustomerId { get; set; }
     public decimal Subtotal { get; set; }

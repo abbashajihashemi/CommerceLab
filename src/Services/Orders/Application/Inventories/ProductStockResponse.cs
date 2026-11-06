@@ -1,4 +1,4 @@
-namespace Orders.Application.Inventory;
+namespace Orders.Application.Inventories;
 
 public class ProductStockResponse
 {

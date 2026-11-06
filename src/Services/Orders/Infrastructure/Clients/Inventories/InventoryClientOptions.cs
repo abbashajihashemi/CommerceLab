@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Orders.Infrastructure.Clients.Inventory;
+namespace Orders.Infrastructure.Clients.Inventories;
 
 public class InventoryClientOptions
 {

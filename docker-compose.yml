@@ -10,16 +10,40 @@
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Development}
       - ASPNETCORE_URLS=http://+:${ORDERS_API_PORT:-8010}
       - Serilog__WriteTo__1__Args__serverUrl=http://seq:80
+      - Services__Inventory__BaseUrl=http://inventories:${INVENTORIES_API_PORT:-8011}
       - RabbitMQ__Host=rabbitmq
       - RabbitMQ__Username=guest
       - RabbitMQ__Password=guest
     depends_on:
       - seq
+      - inventories
       - rabbitmq
     env_file:
       - .env
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:${ORDERS_API_PORT:-8010}/health" ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+  inventories:
+    container_name: inventories-api
+    build:
+      context: .
+      dockerfile: docker/inventories/Dockerfile
+    ports:
+      - "${INVENTORIES_API_PORT:-8011}:${INVENTORIES_API_PORT:-8011}"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Development}
+      - ASPNETCORE_URLS=http://+:${INVENTORIES_API_PORT:-8011}
+      - Serilog__WriteTo__1__Args__serverUrl=http://seq:80
+    depends_on:
+      - seq
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:${INVENTORIES_API_PORT:-8011}/health" ]
       interval: 15s
       timeout: 5s
       retries: 3

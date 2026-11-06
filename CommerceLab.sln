@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # 
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{847F6809-8F20-479C-960A-3E5C33338F2C}"
 EndProject
@@ -13,6 +13,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Domain", "src\Services\Orders\Domain\Orders.Domain.csproj", "{D763A17E-51CF-4C86-9B62-9612659270A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Infrastructure", "src\Services\Orders\Infrastructure\Orders.Infrastructure.csproj", "{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inventories", "Inventories", "{9990D183-5325-4197-AADF-1713AFED141B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventories.Api", "src\Services\Inventories\Api\Inventories.Api.csproj", "{DBD05F17-06B2-48B1-8BC2-4F895E9E9F0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,10 @@ Global
 		{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD05F17-06B2-48B1-8BC2-4F895E9E9F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD05F17-06B2-48B1-8BC2-4F895E9E9F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD05F17-06B2-48B1-8BC2-4F895E9E9F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD05F17-06B2-48B1-8BC2-4F895E9E9F0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890} = {847F6809-8F20-479C-960A-3E5C33338F2C}
@@ -44,5 +52,7 @@ Global
 		{1638C990-A7D7-4F50-9D64-957095D20393} = {B2C3D4E5-F6A7-8901-BCDE-F12345678901}
 		{D763A17E-51CF-4C86-9B62-9612659270A3} = {B2C3D4E5-F6A7-8901-BCDE-F12345678901}
 		{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986} = {B2C3D4E5-F6A7-8901-BCDE-F12345678901}
+		{9990D183-5325-4197-AADF-1713AFED141B} = {A1B2C3D4-E5F6-7890-ABCD-EF1234567890}
+		{DBD05F17-06B2-48B1-8BC2-4F895E9E9F0A} = {9990D183-5325-4197-AADF-1713AFED141B}
 	EndGlobalSection
 EndGlobal

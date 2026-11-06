@@ -1,6 +1,6 @@
 namespace Orders.Infrastructure.Persistence;
 
-public static class OrderSeedIds
+internal static class OrderSeedIds
 {
     public static readonly Guid Order01 = Guid.Parse("10000000-0000-0000-0000-000000000001");
     public static readonly Guid Order02 = Guid.Parse("10000000-0000-0000-0000-000000000002");
