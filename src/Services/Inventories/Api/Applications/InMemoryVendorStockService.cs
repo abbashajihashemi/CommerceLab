@@ -41,6 +41,11 @@ public class InMemoryVendorStockService(ILogger<InMemoryVendorStockService> logg
             })
             .ToList();
 
+        logger.LogInformation(
+            "Stock inquiry for vendor {VendorCode} returned {Count} products",
+            vendorCode,
+            result.Count);
+
         return Task.FromResult<IReadOnlyList<VendorProductStockResponse>>(result);
     }
 }

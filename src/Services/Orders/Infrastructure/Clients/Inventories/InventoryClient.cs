@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Orders.Application.Inventories;
 
@@ -22,15 +23,23 @@ public class InventoryClient(
         }
 
         var body = new StockQueryRequest(ids);
-        logger.LogInformation("Stock inquiry sending request {body}", body);
+        logger.LogInformation("Stock inquiry sending request for vendor {VendorCode} with {Count} products", vendorCode, ids.Length);
 
-        var route = $"api/v1/vendors/{vendorCode}/stock";
+        var route = $"api/v1/vendors/{vendorCode}/stock/products";
         using var response = await httpClient.PostAsJsonAsync(route, body, ct);
 
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<List<ProductStockResponse>>(ct) ?? [];
+        var payload = await response.Content.ReadFromJsonAsync<StockQueryResponse>(JsonOptions, ct);
+        return payload?.Data ?? [];
     }
 
+    private static readonly JsonSerializerOptions JsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
+
     private sealed record StockQueryRequest(IReadOnlyCollection<long> ProductCodes);
+
+    private sealed record StockQueryResponse(IReadOnlyList<ProductStockResponse> Data);
 }

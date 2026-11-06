@@ -41,8 +41,6 @@ public class InMemoryOrderRepository : IOrderRepository
 
     private static void Seed()
     {
-        var statuses = Enum.GetValues<OrderStepStatus>();
-
         var products = new (long Code, string Title, decimal Price)[]
         {
             (1001, "Wireless Mouse", 25.90m),
@@ -81,13 +79,23 @@ public class InMemoryOrderRepository : IOrderRepository
             var orderId = OrderSeedIds.All[i - 1];
             var vendor = vendors[(i - 1) % vendors.Length];
 
+            // Most orders are Unpaid so detail can call Inventories; a few other statuses for variety
+            var stepStatus = i switch
+            {
+                4 or 8 => OrderStepStatus.Paid,
+                5 or 10 => OrderStepStatus.Rejected,
+                6 => OrderStepStatus.Cancelled,
+                12 => OrderStepStatus.Returned,
+                _ => OrderStepStatus.Unpaid
+            };
+
             var order = new Order
             {
                 Id = orderId,
                 Code = $"ORD-{now:yyyyMMdd}-{i:D4}",
                 VendorCode = vendor.Code,
                 VendorDisplayName = vendor.DisplayName,
-                StepStatus = statuses[(i - 1) % statuses.Length],
+                StepStatus = stepStatus,
                 CustomerId = customers[(i - 1) % customers.Length],
                 CreatedAt = now.AddDays(-i).AddMinutes(-i * 7),
             };
