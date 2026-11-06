@@ -1,5 +1,6 @@
-@Inventories.Api_HostAddress = http://localhost:8011
+@HostAddress = http://localhost:8011
 
-
+GET {{HostAddress}}/health
+Accept: application/json
 
 ###
