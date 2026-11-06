@@ -1,15 +1,18 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # 
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{847F6809-8F20-479C-960A-3E5C33338F2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Api", "src\OrderManagement.Api\OrderManagement.Api.csproj", "{12A97A76-7E80-426E-86E6-67461F962BB8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Application", "src\OrderManagement.Application\OrderManagement.Application.csproj", "{1638C990-A7D7-4F50-9D64-957095D20393}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderManagement", "OrderManagement", "{B2C3D4E5-F6A7-8901-BCDE-F12345678901}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Domain", "src\OrderManagement.Domain\OrderManagement.Domain.csproj", "{D763A17E-51CF-4C86-9B62-9612659270A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Api", "src\Services\OrderManagement\OrderManagement.Api\OrderManagement.Api.csproj", "{12A97A76-7E80-426E-86E6-67461F962BB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Infrastructure", "src\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj", "{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Application", "src\Services\OrderManagement\OrderManagement.Application\OrderManagement.Application.csproj", "{1638C990-A7D7-4F50-9D64-957095D20393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Domain", "src\Services\OrderManagement\OrderManagement.Domain\OrderManagement.Domain.csproj", "{D763A17E-51CF-4C86-9B62-9612659270A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Infrastructure", "src\Services\OrderManagement\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj", "{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,9 +38,11 @@ Global
 		{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{12A97A76-7E80-426E-86E6-67461F962BB8} = {847F6809-8F20-479C-960A-3E5C33338F2C}
-		{1638C990-A7D7-4F50-9D64-957095D20393} = {847F6809-8F20-479C-960A-3E5C33338F2C}
-		{D763A17E-51CF-4C86-9B62-9612659270A3} = {847F6809-8F20-479C-960A-3E5C33338F2C}
-		{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986} = {847F6809-8F20-479C-960A-3E5C33338F2C}
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890} = {847F6809-8F20-479C-960A-3E5C33338F2C}
+		{B2C3D4E5-F6A7-8901-BCDE-F12345678901} = {A1B2C3D4-E5F6-7890-ABCD-EF1234567890}
+		{12A97A76-7E80-426E-86E6-67461F962BB8} = {B2C3D4E5-F6A7-8901-BCDE-F12345678901}
+		{1638C990-A7D7-4F50-9D64-957095D20393} = {B2C3D4E5-F6A7-8901-BCDE-F12345678901}
+		{D763A17E-51CF-4C86-9B62-9612659270A3} = {B2C3D4E5-F6A7-8901-BCDE-F12345678901}
+		{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986} = {B2C3D4E5-F6A7-8901-BCDE-F12345678901}
 	EndGlobalSection
 EndGlobal
