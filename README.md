@@ -4,13 +4,13 @@ Modular Monolith for learning Docker, Message Brokers (RabbitMQ + MassTransit) a
 
 ## Structure
 - `src/Services/OrderManagement/`
-  - `OrderManagement.Api`
-  - `OrderManagement.Application`
-  - `OrderManagement.Domain`
-  - `OrderManagement.Infrastructure`
+  - `Api` (assembly: `OrderManagement.Api`)
+  - `Application` (assembly: `OrderManagement.Application`)
+  - `Domain` (assembly: `OrderManagement.Domain`)
+  - `Infrastructure` (assembly: `OrderManagement.Infrastructure`)
 
 ## How to run
 ```bash
-cd src/Services/OrderManagement/OrderManagement.Api
+cd src/Services/OrderManagement/Api
 dotnet run
 ```

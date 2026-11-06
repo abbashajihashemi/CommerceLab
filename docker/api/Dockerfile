@@ -5,24 +5,24 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copying project files for better restoration (cache layer)
-COPY ["src/Services/OrderManagement/OrderManagement.Api/OrderManagement.Api.csproj", "src/Services/OrderManagement/OrderManagement.Api/"]
-COPY ["src/Services/OrderManagement/OrderManagement.Application/OrderManagement.Application.csproj", "src/Services/OrderManagement/OrderManagement.Application/"]
-COPY ["src/Services/OrderManagement/OrderManagement.Domain/OrderManagement.Domain.csproj", "src/Services/OrderManagement/OrderManagement.Domain/"]
-COPY ["src/Services/OrderManagement/OrderManagement.Infrastructure/OrderManagement.Infrastructure.csproj", "src/Services/OrderManagement/OrderManagement.Infrastructure/"]
+COPY ["src/Services/OrderManagement/Api/Api.csproj", "src/Services/OrderManagement/Api/"]
+COPY ["src/Services/OrderManagement/Application/Application.csproj", "src/Services/OrderManagement/Application/"]
+COPY ["src/Services/OrderManagement/Domain/Domain.csproj", "src/Services/OrderManagement/Domain/"]
+COPY ["src/Services/OrderManagement/Infrastructure/Infrastructure.csproj", "src/Services/OrderManagement/Infrastructure/"]
 
-RUN dotnet restore "src/Services/OrderManagement/OrderManagement.Api/OrderManagement.Api.csproj"
+RUN dotnet restore "src/Services/OrderManagement/Api/Api.csproj"
 
 # Copy other sources
 COPY . .
 
-WORKDIR "/src/src/Services/OrderManagement/OrderManagement.Api"
-RUN dotnet build "OrderManagement.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Services/OrderManagement/Api"
+RUN dotnet build "Api.csproj" -c Release -o /app/build
 
 # ======================
 # Stage 2: Publish
 # ======================
 FROM build AS publish
-RUN dotnet publish "OrderManagement.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # ======================
 # Stage 3: Runtime

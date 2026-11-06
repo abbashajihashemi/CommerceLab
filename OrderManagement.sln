@@ -6,13 +6,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderManagement", "OrderManagement", "{B2C3D4E5-F6A7-8901-BCDE-F12345678901}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Api", "src\Services\OrderManagement\OrderManagement.Api\OrderManagement.Api.csproj", "{12A97A76-7E80-426E-86E6-67461F962BB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Api", "src\Services\OrderManagement\Api\Api.csproj", "{12A97A76-7E80-426E-86E6-67461F962BB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Application", "src\Services\OrderManagement\OrderManagement.Application\OrderManagement.Application.csproj", "{1638C990-A7D7-4F50-9D64-957095D20393}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Application", "src\Services\OrderManagement\Application\Application.csproj", "{1638C990-A7D7-4F50-9D64-957095D20393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Domain", "src\Services\OrderManagement\OrderManagement.Domain\OrderManagement.Domain.csproj", "{D763A17E-51CF-4C86-9B62-9612659270A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Domain", "src\Services\OrderManagement\Domain\Domain.csproj", "{D763A17E-51CF-4C86-9B62-9612659270A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Infrastructure", "src\Services\OrderManagement\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj", "{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Infrastructure", "src\Services\OrderManagement\Infrastructure\Infrastructure.csproj", "{3692E9B8-DAE9-4EF8-B326-A2A9BC5D5986}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
